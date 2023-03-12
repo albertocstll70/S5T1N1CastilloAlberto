@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head ">
+<meta charset="UTF-8">
+<title>Agregar Sucursal</title>
+</head>
+<body>
+<h1> Rellene los siguientes datos:</h1>
+
+ 
+ <form th:object="${sucursal}" th:action="@{/sucursal/guardar}" method="post">
+ 
+  <input type="hidden" name="pk_SucursalID" th:field="*{pk_SucursalID}"/>
+  
+    <label>Nombre:</label>    
+    <input type="text" th:field="*{nomSucursal}"placeholder="Escribe el nombre de la sucursal" />
+    
+<div th:errors=*{nomSucursal}></div>
+    <label>Pais:</label>
+    <input type="text"  th:field="*{paisSucursal}"  placeholder="Escribe el país "/>
+   <div th:errors=*{paisSucursal}></div>
+  
+
+    <button type="submit">Guardar</button>
+</form>
+ 
+
+</body>
+</html>

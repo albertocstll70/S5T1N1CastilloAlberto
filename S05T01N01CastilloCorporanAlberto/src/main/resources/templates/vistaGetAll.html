@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head ">
+
+<meta charset="UTF-8">
+ 
+   
+
+<title>Sucursal</title>
+
+</head>
+
+<body>
+	<h1>Sucursales</h1>
+	 <a th:href="@{/sucursal/add}">Crear nueva sucursar</a>
+	 <div th:if="${sucursales != null and !sucursales.empty}">
+	<table border="1" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Pais</th>
+				<th>Tipo pais</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>	
+		
+		    
+			 <tr th:each="sucursal: ${sucursales}">
+				<td th:text="${sucursal.pk_SucursalID}">
+				<td th:text="${sucursal.nomSucursal}">
+				<td th:text="${sucursal.paisSucursal}">
+				<td th:text="${sucursal.tipusSucursal}">
+				<td><a th:href="@{/sucursal/update/} + ${sucursal.pk_SucursalID}" th:text="update"></a></td>
+				<td><a th:href="@{/sucursal/delete/}+ ${sucursal.pk_SucursalID}" th:text="delete"></a></td>
+				
+		</tbody>
+	</table>
+	<a th:href="@{/}">Volver a la pagina de inicio</a>
+</div>
+ <div th:if="${sucursales == null  or sucursales.empty}">
+ La lista de sucursales esta vacía
+ </div>
+</body>
+</html>
+
+
+

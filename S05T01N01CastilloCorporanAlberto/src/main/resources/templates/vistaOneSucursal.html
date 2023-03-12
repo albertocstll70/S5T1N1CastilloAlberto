@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head ">
+<meta charset="UTF-8">
+<title>Sucursal</title>
+
+</head>
+<body>
+
+
+
+<h1>Sucursal</h1>
+<table border ="1" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Pais</th>
+            <th>Tipo pais</th>
+            <th>Update</th>
+            <th>Delete</th>
+           
+        </tr>
+    </thead>
+    <tbody>   
+         <tr th:each="sucursal: ${sucursalDTO}">
+            <td th:text="${sucursal.pk_SucursalID}"></td>
+            <td th:text="${sucursal.nomSucursal}"></td>
+            <td th:text="${sucursal.paisSucursal}"></td>
+            <td th:text="${sucursal.tipusSucursal}"></td>
+            <td><a th:href="@{/sucursal/update/} + ${sucursal.pk_SucursalID}" th:text="update"></a></td>
+            <td><a th:href="@{/sucursal/delete/}+ ${sucursal.pk_SucursalID}" th:text="delete"></a></td>
+           
+        </tr>
+    </tbody>
+</table>
+
+		
+	<a th:href="@{/}">Volver a la pagina de inicio</a>	
+		
+
+	</body>
+</html>
